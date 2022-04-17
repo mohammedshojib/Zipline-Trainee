@@ -7,7 +7,6 @@ import Hero2 from "./Hero2";
 
 const Home = () => {
   const [services, setServices] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("serviceData.json")
@@ -17,7 +16,7 @@ const Home = () => {
   return (
     <div>
       <Hero />
-      <div className="main-container" onClick={() => navigate("/checkout")}>
+      <div className="main-container">
         {services.map((service) => (
           <Service service={service} key={service._id}></Service>
         ))}
