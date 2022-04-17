@@ -6,12 +6,12 @@ const Hero = () => {
     <div className="hero">
       <div className="col">
         <h3>
-          Hy! Reviewing <br /> <span>Jhankars Course</span>
+          Wellcome to <br /> <span>Zipline Trainee</span>
         </h3>
         <p>
-          We are review web development course for you. We aks every people what
-          they think how thare experience with <b>Jhankers</b> web development
-          course
+          A freelance Zipline trainer with 4 years of exp. i teach more then 100
+          of people how to use zipline <b>100%</b> with safety. Lets start with
+          you
         </p>
         <a href="#">Explore More</a>
       </div>

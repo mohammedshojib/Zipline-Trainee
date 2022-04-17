@@ -7,8 +7,9 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Notfound from "./components/Notfound";
 import RequireAuth from "./components/RequireAuth";
-import Hello from "./components/Hello";
+import Checkout from "./components/Checkout";
 import Myprofile from "./components/Myprofile";
+import Footer from "./components/Footer";
 
 export const ReviewsContext = createContext();
 
@@ -23,14 +24,15 @@ function App() {
         <Route path="/myaccount" element={<Myprofile />} />
         <Route path="/*" element={<Notfound />} />
         <Route
-          path="/hello"
+          path="/checkout"
           element={
             <RequireAuth>
-              <Hello />
+              <Checkout />
             </RequireAuth>
           }
         />
       </Routes>
+      <Footer />
     </div>
   );
 }

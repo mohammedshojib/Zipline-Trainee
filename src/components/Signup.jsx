@@ -15,6 +15,7 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [user, loading, errorHook] = useAuthState(auth);
+  const [error, setError] = useState("");
 
   const creatUser = (e) => {
     e.preventDefault();
@@ -24,8 +25,8 @@ const Signup = () => {
         console.log(user);
       })
       .catch((error) => {
-        const errorCode = error.code;
         const errorMessage = error.message;
+        setError(errorMessage);
       });
   };
 
@@ -48,6 +49,7 @@ const Signup = () => {
     return (
       <div className="wrapper">
         <div className="text-center mt-4 name"> Signup </div>
+        <p className="text-danger text-center">{error}</p>
         <form className="p-3 mt-3" onSubmit={creatUser}>
           <div className="form-field d-flex align-items-center">
             <span className="far fa-user"></span>

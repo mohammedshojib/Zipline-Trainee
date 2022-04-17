@@ -25,8 +25,8 @@ const Login = () => {
         <Navigate to="/" />;
       })
       .catch((error) => {
-        const errorCode = error.code;
         const errorMessage = error.message;
+        setError(errorMessage);
       });
   };
 
@@ -46,6 +46,7 @@ const Login = () => {
     return (
       <div className="wrapper">
         <div className="text-center mt-4 name"> Login </div>
+        <p className="text-danger text-center">{error}</p>
         <form className="p-3 mt-3" onSubmit={handleLogin}>
           <div className="form-field d-flex align-items-center">
             <span className="far fa-user"></span>
@@ -57,6 +58,7 @@ const Login = () => {
               placeholder="Your Email"
             />
           </div>
+
           <div className="form-field d-flex align-items-center">
             <span className="fas fa-key"></span>
             <input

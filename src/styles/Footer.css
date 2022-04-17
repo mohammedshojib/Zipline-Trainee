@@ -1,0 +1,18 @@
+.footer {
+  margin-top: 50px;
+  text-align: center;
+}
+.footer h1 {
+  font-size: 26px;
+  color: white;
+  padding-top: 50px;
+}
+.footer p {
+  color: white;
+  font-size: 14px;
+  padding-bottom: 40px;
+}
+.footer-area {
+  background-color: #0a0826;
+  margin-bottom: -50px;
+}
