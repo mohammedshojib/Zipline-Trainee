@@ -10,6 +10,8 @@ import RequireAuth from "./components/RequireAuth";
 import Checkout from "./components/Checkout";
 import Myprofile from "./components/Myprofile";
 import Footer from "./components/Footer";
+import About from "./components/About";
+import QandA from "./components/QandA";
 
 export const ReviewsContext = createContext();
 
@@ -22,6 +24,8 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/myaccount" element={<Myprofile />} />
+        <Route path="/q&a" element={<QandA />} />
+        <Route path="/about" element={<About />} />
         <Route path="/*" element={<Notfound />} />
         <Route
           path="/checkout"
