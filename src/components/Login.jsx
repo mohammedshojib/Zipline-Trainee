@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import "../styles/Login.css";
 import {
   signInWithPopup,
@@ -55,53 +55,57 @@ const Login = () => {
       toast("please enter your email address");
     }
   };
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
-  if (user) {
-    return <Navigate to="/" />;
-  } else {
-    return (
-      <div className="wrapper">
-        <div className="text-center mt-4 name"> Login </div>
-        <p className="text-danger text-center">{error}</p>
-        <form className="p-3 mt-3" onSubmit={handleLogin}>
-          <div className="form-field d-flex align-items-center">
-            <span className="far fa-user"></span>
-            <input
-              onChange={(e) => setEmail(e.target.value)}
-              type="email"
-              name="email"
-              id="email"
-              placeholder="Your Email"
-            />
-          </div>
+  useEffect(() => {
+    if (user) {
+      navigate(from);
+    }
+  }, [user]);
 
-          <div className="form-field d-flex align-items-center">
-            <span className="fas fa-key"></span>
-            <input
-              onChange={(e) => setPassword(e.target.value)}
-              type="password"
-              name="password"
-              id="pwd"
-              placeholder="Password"
-            />
-          </div>
-          <input type="submit" className="btn mt-3" value="Login" />
-        </form>
-
-        <div className="text-center fs-6">
-          <span className="text-primary pe-auto" onClick={resetPassword}>
-            Forget password?
-          </span>
-          or <span> </span>
-          <Link to="/signup">Sign up</Link>
-          <button className="btn mt-3" onClick={handleSignin}>
-            Continue With Google
-          </button>
-          <ToastContainer />
+  return (
+    <div className="wrapper">
+      <div className="text-center mt-4 name"> Login </div>
+      <p className="text-danger text-center">{error}</p>
+      <form className="p-3 mt-3" onSubmit={handleLogin}>
+        <div className="form-field d-flex align-items-center">
+          <span className="far fa-user"></span>
+          <input
+            onChange={(e) => setEmail(e.target.value)}
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Your Email"
+          />
         </div>
-      </div>
-    );
-  }
-};
 
+        <div className="form-field d-flex align-items-center">
+          <span className="fas fa-key"></span>
+          <input
+            onChange={(e) => setPassword(e.target.value)}
+            type="password"
+            name="password"
+            id="pwd"
+            placeholder="Password"
+          />
+        </div>
+        <input type="submit" className="btn mt-3" value="Login" />
+      </form>
+
+      <div className="text-center fs-6">
+        <span className="text-primary pe-auto" onClick={resetPassword}>
+          Forget password?
+        </span>
+        or <span> </span>
+        <Link to="/signup">Sign up</Link>
+        <button className="btn mt-3" onClick={handleSignin}>
+          Continue With Google
+        </button>
+        <ToastContainer />
+      </div>
+    </div>
+  );
+};
 export default Login;
