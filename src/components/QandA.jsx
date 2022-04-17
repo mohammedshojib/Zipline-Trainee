@@ -41,7 +41,7 @@ const QandA = () => {
       <b>
         Cloud Firestore. Cloud Functions. Authentication. Hosting. Cloud
         Storage. Google Analytics. Predictions. Cloud Messaging. Dynamic Links.
-        Remote Config
+        Remote Config,
       </b>
     </div>
   );

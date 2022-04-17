@@ -55,6 +55,7 @@ const Login = () => {
       toast("please enter your email address");
     }
   };
+
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
