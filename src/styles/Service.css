@@ -1,0 +1,24 @@
+.col-m {
+  width: 90%;
+  border: 1px solid #808080;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px 0;
+}
+.col-m img {
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+}
+
+@media only screen and (max-width: 600px) {
+  .col-m {
+    width: 90%;
+    border: 1px solid #808080;
+    border-radius: 10px;
+    padding-left: 10px;
+    margin-left: 10px;
+    margin-top: 30px;
+  }
+}
