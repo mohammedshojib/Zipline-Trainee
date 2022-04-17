@@ -1,5 +1,3 @@
-import { createContext, useEffect, useState } from "react";
-// import "./App.css";
 import Header from "./components/Header";
 import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
@@ -12,8 +10,6 @@ import Myprofile from "./components/Myprofile";
 import Footer from "./components/Footer";
 import About from "./components/About";
 import QandA from "./components/QandA";
-
-export const ReviewsContext = createContext();
 
 function App() {
   return (

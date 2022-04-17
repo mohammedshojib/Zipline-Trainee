@@ -36,10 +36,15 @@ const Myprofile = () => {
           <div className="logo">
             <img src={currentUser?.photoURL || notFoundIMG} alt="" />
           </div>
-          {currentUser.displayName || "Name Not Found"}{" "}
+          {currentUser.displayName || "Name Not Found"}
+          <p>{currentUser.email}</p>
         </div>
-        <p></p>
-        <button className="btn mt-3" onClick={logOut}>
+
+        <button
+          style={{ backgroundColor: "red" }}
+          className="btn mt-3"
+          onClick={logOut}
+        >
           LogOut
         </button>
       </div>
