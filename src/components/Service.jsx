@@ -6,7 +6,7 @@ const Service = ({ service }) => {
   const { name, img, pricing, reviewdetails } = service;
   return (
     <div className="col-m">
-      <img src={img} alt="" />
+      <img src={img ? img : "image not found"} alt="" />
       <h4>{name}</h4>
       <p>
         <FaDollarSign /> <b>{pricing}</b>
