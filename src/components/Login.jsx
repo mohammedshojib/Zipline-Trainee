@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import "../styles/Login.css";
 import {
   signInWithPopup,
@@ -7,7 +7,12 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../firebase.init";
-import { useAuthState } from "react-firebase-hooks/auth";
+import {
+  useAuthState,
+  useSendPasswordResetEmail,
+} from "react-firebase-hooks/auth";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const provider = new GoogleAuthProvider();
 
@@ -16,6 +21,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [user, loading, errorHook] = useAuthState(auth);
+  const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -23,6 +29,7 @@ const Login = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         <Navigate to="/" />;
+        toast("Invalid email provided, please provide a valid email");
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -38,6 +45,15 @@ const Login = () => {
       .catch((error) => {
         console.log(error.message);
       });
+  };
+
+  const resetPassword = async () => {
+    if (email) {
+      await sendPasswordResetEmail(email);
+      toast("Sented email");
+    } else {
+      toast("please enter your email address");
+    }
   };
 
   if (user) {
@@ -70,15 +86,18 @@ const Login = () => {
             />
           </div>
           <input type="submit" className="btn mt-3" value="Login" />
-          {/* <p>{error?.message}</p> */}
         </form>
 
         <div className="text-center fs-6">
-          <Link to="#">Forget password?</Link> or <span> </span>
+          <span className="text-primary pe-auto" onClick={resetPassword}>
+            Forget password?
+          </span>
+          or <span> </span>
           <Link to="/signup">Sign up</Link>
           <button className="btn mt-3" onClick={handleSignin}>
             Continue With Google
           </button>
+          <ToastContainer />
         </div>
       </div>
     );

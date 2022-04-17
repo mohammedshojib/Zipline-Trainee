@@ -1,11 +1,13 @@
 import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 
 const Hello = () => {
   const [checkoutState, setCheckoutState] = useState("");
 
   const handleCheckout = (e) => {
     e.preventDefault();
-    setCheckoutState("Sucsess");
+    setCheckoutState("Sucsessfull");
+    toast("Submited Sucessfully");
   };
 
   return (
@@ -27,12 +29,7 @@ const Hello = () => {
         </div>
         <div className="form-field d-flex align-items-center">
           <span className="fas fa-key"></span>
-          <input
-            type="password"
-            name="password"
-            id="pwd"
-            placeholder="Password"
-          />
+          <input type="text" name="password" id="pwd" placeholder="Note" />
         </div>
         <div className="form-field d-flex align-items-center">
           <span className="fas fa-key"></span>
@@ -46,6 +43,7 @@ const Hello = () => {
         <h4>{checkoutState}</h4>
         <input type="submit" className="btn mt-3" value="Submit" />
       </form>
+      <ToastContainer />
     </div>
   );
 };
