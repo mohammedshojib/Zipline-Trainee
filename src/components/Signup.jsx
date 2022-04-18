@@ -2,6 +2,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
+  sendEmailVerification,
 } from "firebase/auth";
 import React, { useState } from "react";
 import "../styles/Login.css";
@@ -28,7 +29,7 @@ const Signup = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log(user);
+        sendEmailVerification(auth.currentUser).then(() => {});
       })
       .catch((error) => {
         const errorMessage = error.message;
